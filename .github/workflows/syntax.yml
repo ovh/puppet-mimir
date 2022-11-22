@@ -1,0 +1,16 @@
+name: Run syntax validation
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@v2
+
+    - name: Run static validation and save report to junit xml
+      uses: puppet-enterprise-support-team/action-pdk-validate@v1
+
