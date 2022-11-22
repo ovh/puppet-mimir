@@ -1,0 +1,7 @@
+# MANAGED BY PUPPET
+<%- $systemd_overrides.each |String $section_name, Hash $section_overrides| { -%>
+[<%= $section_name %>]
+<%- $section_overrides.each |String $override_name, String $override_value| { -%>
+<%= $override_name %>=<%= $override_value %>
+<%- } -%>
+<%- } -%>

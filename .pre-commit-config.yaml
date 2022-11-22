@@ -1,0 +1,29 @@
+---
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.3.0
+    hooks:
+      - id: check-executables-have-shebangs
+      - id: check-json
+      - id: check-merge-conflict
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/pre-commit/mirrors-puppet-lint
+    rev: v2.4.2
+    hooks:
+      - id: puppet-lint
+        args:
+          - --with-filename
+          - --no-autoloader_layout-check
+          - --no-variable_scope-check
+          - --no-documentation-check
+          - --no-80chars-check
+          - --no-arrow_alignment-check
+
+  # Use this repository instead of https://github.com/chriskuehl/puppet-pre-commit-hooks, waiting for PR to be merged.
+  - repo: https://github.com/bubu11e/puppet-pre-commit-hooks
+    rev:  41d2077
+    hooks:
+      - id: puppet-validate
+      - id: epp-validate
+      - id: puppet-strings
