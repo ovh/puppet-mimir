@@ -4,9 +4,9 @@
   "author": "OVHcloud",
   "summary": "Installs, configures, and manages the Grafana mimir service.",
   "license": "Apache-2.0",
-  "source": "",
+  "source": "https://github.com/ovh/puppet-mimir",
   "project_page": "https://grafana.com/oss/mimir/",
-  "issues_url": "",
+  "issues_url": "https://github.com/ovh/puppet-mimir/issues",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
