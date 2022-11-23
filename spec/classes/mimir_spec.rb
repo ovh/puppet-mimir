@@ -35,7 +35,7 @@ describe 'mimir' do
         'config_owner'          => 'test_owner',
         'config_group'          => 'test_group',
         'config_dir'            => '/test/config',
-        'custom_args'           => [ 'test_arg' ],
+        'custom_args'           => [ 'test_arg_1', 'test_arg_2' ],
         'systemd_overrides'     => {
           'Service' => {
             'LimitNOFILE'       => '42',
@@ -131,8 +131,20 @@ describe 'mimir' do
 
         it {
           is_expected.to contain_file('/etc/default/mimir')
-            .with(
+            .only_with(
               ensure: 'file',
+              content:
+                "# MANAGED BY PUPPET\n"\
+                "# Log level. Valid levels: [debug, info, warn, error]. Default: \"info\"\n"\
+                "LOG_LEVEL=\"info\"\n"\
+                "\n"\
+                "# Path to Mimir YAML configuration file.\n"\
+                "CONFIG_FILE=\"#{params['config_dir']}/config.yml\"\n"\
+                "\n"\
+                "# Custom user defined arguments.\n"\
+                "CUSTOM_ARGS=\"#{params['custom_args'].join(' ')}\"\n"\
+                "\n"\
+                "RESTART_ON_UPGRADE=\"true\"\n",
               owner: 'root',
               group: 'root',
               mode: '0640',
