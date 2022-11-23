@@ -39,6 +39,7 @@ The following parameters are available in the `mimir` class:
 * [`log_file_path`](#-mimir--log_file_path)
 * [`log_file_mode`](#-mimir--log_file_mode)
 * [`log_group`](#-mimir--log_group)
+* [`log_level`](#-mimir--log_level)
 * [`log_owner`](#-mimir--log_owner)
 * [`log_to_file`](#-mimir--log_to_file)
 * [`validate_cmd`](#-mimir--validate_cmd)
@@ -165,6 +166,14 @@ Data type: `String`
 Group to use for log resources
 
 Default value: `'root'`
+
+##### <a name="-mimir--log_level"></a>`log_level`
+
+Data type: `String`
+
+Log level to use for process mimir
+
+Default value: `'info'`
 
 ##### <a name="-mimir--log_owner"></a>`log_owner`
 

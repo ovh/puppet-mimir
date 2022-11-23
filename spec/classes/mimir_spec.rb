@@ -19,6 +19,7 @@ describe 'mimir' do
         'custom_args'          => [],
         'systemd_overrides'    => nil,
         'log_to_file'          => false,
+        'log_level'            => 'info',
         'restart_cmd'          => '/bin/systemctl reload mimir',
         'restart_on_change'    => false,
         'validate_cmd'         => '/usr/local/bin/mimir --modules=true',
@@ -47,6 +48,7 @@ describe 'mimir' do
         'log_file_path'         => 'mimir-test.log',
         'log_file_mode'         => '0640',
         'log_group'             => 'test_group',
+        'log_level'             => 'debug',
         'log_owner'             => 'test_owner',
         'log_to_file'           => true,
         'restart_cmd'           => '/test/bin/restart',
@@ -136,7 +138,7 @@ describe 'mimir' do
               content:
                 "# MANAGED BY PUPPET\n"\
                 "# Log level. Valid levels: [debug, info, warn, error]. Default: \"info\"\n"\
-                "LOG_LEVEL=\"info\"\n"\
+                "LOG_LEVEL=\"#{params['log_level']}\"\n"\
                 "\n"\
                 "# Path to Mimir YAML configuration file.\n"\
                 "CONFIG_FILE=\"#{params['config_dir']}/config.yml\"\n"\

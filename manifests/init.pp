@@ -18,6 +18,7 @@
 # @param log_file_path Filename to store mimir logs if log to file is enabled
 # @param log_file_mode Mode of the file used to store logs
 # @param log_group Group to use for log resources
+# @param log_level Log level to use for process mimir
 # @param log_owner Owner to use for log resources
 # @param log_to_file Should log be kept in journald or sent to a dedicated file
 # @param validate_cmd Command use to validate configuration
@@ -49,6 +50,7 @@ class mimir (
     String    $log_file_path     = 'mimir.log',
     String    $log_file_mode     = '0600',
     String    $log_group         = 'root',
+    String    $log_level         = 'info',
     String    $log_owner         = 'root',
     Boolean   $log_to_file       = false,
     # Note: https://github.com/grafana/mimir/issues/2588
