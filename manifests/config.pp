@@ -11,6 +11,7 @@ class mimir::config {
   $log_file_path     = $::mimir::log_file_path
   $log_file_mode     = $::mimir::log_file_mode
   $log_group         = $::mimir::log_group
+  $log_level         = $::mimir::log_level
   $log_owner         = $::mimir::log_owner
   $log_to_file       = $::mimir::log_to_file
   $systemd_overrides = $mimir::systemd_overrides
@@ -43,7 +44,7 @@ class mimir::config {
   # This means we cannot define the CONFIG_FILE environment with a drop-in
   file { '/etc/default/mimir':
     ensure  => 'file',
-    content => epp('mimir/systemd-default.epp', {'config_dir' => $config_dir, 'custom_args' => $custom_args}),
+    content => epp('mimir/systemd-default.epp', {'config_dir' => $config_dir, 'custom_args' => $custom_args, 'log_level' => $log_level}),
     owner   => 'root',
     group   => 'root',
     mode    => '0640'

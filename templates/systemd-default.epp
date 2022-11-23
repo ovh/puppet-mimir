@@ -1,6 +1,6 @@
 # MANAGED BY PUPPET
 # Log level. Valid levels: [debug, info, warn, error]. Default: "info"
-LOG_LEVEL="info"
+LOG_LEVEL="<%= $log_level %>"
 
 # Path to Mimir YAML configuration file.
 CONFIG_FILE="<%= $config_dir %>/config.yml"
