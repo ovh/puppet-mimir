@@ -1,7 +1,7 @@
 {
   "name": "ovh-mimir",
-  "version": "6.1.0",
-  "author": "OVHCloud",
+  "version": "1.0.0",
+  "author": "OVHcloud",
   "summary": "Installs, configures, and manages the Grafana mimir service.",
   "license": "Apache-2.0",
   "source": "",
