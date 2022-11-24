@@ -1,5 +1,5 @@
 {
-  "name": "ovh-mimir",
+  "name": "ovhcloud-mimir",
   "version": "1.0.0",
   "author": "OVHcloud",
   "summary": "Installs, configures, and manages the Grafana mimir service.",
