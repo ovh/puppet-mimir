@@ -42,7 +42,7 @@ class mimir::config {
   # configuration file to use is define. As per systemd behavior variables
   # defined in Environment are override per the ones from EnvironmentFile.
   # This means we cannot define the CONFIG_FILE environment with a drop-in
-  file { '/etc/default/mimir':
+  file { '/etc/sysconfig/mimir':
     ensure  => 'file',
     content => epp('mimir/systemd-default.epp', {'config_dir' => $config_dir, 'custom_args' => $custom_args, 'log_level' => $log_level}),
     owner   => 'root',
