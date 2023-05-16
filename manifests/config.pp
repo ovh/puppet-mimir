@@ -17,6 +17,8 @@ class mimir::config {
   $systemd_overrides = $::mimir::systemd_overrides
   $validate_cmd      = $::mimir::validate_cmd
 
+
+
   # Here we ensure that the configuration directory created
   # by the package has the expected owner, group and mode.
   file { $config_dir:
@@ -42,7 +44,21 @@ class mimir::config {
   # configuration file to use is define. As per systemd behavior variables
   # defined in Environment are override per the ones from EnvironmentFile.
   # This means we cannot define the CONFIG_FILE environment with a drop-in
-  file { '/etc/sysconfig/mimir':
+
+  case $::osfamily {
+    'debian': {
+      $environment_file =  '/etc/default/mimir'
+    }
+    'redhat':{
+      $environment_file =  '/etc/sysconfig/mimir'
+    }
+    default: {
+      $environment_file =  '/etc/default/mimir'
+    }
+
+  }
+
+  file { $environment_file:
     ensure  => 'file',
     content => epp('mimir/systemd-default.epp', {'config_dir' => $config_dir, 'custom_args' => $custom_args, 'log_level' => $log_level}),
     owner   => 'root',
