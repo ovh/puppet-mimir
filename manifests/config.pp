@@ -49,7 +49,7 @@ class mimir::config {
     'Debian': {
       $environment_file =  '/etc/default/mimir'
     }
-    'redhat':{
+    'RedHat':{
       $environment_file =  '/etc/sysconfig/mimir'
     }
     default: {
