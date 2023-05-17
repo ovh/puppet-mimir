@@ -46,7 +46,7 @@ class mimir::config {
   # This means we cannot define the CONFIG_FILE environment with a drop-in
 
   case $::osfamily {
-    'debian': {
+    'Debian': {
       $environment_file =  '/etc/default/mimir'
     }
     'redhat':{
