@@ -54,7 +54,7 @@ class mimir (
     String    $log_owner         = 'root',
     Boolean   $log_to_file       = false,
     # Note: https://github.com/grafana/mimir/issues/2588
-    String    $validate_cmd      = '/usr/local/bin/mimir --modules=true',
+    String    $validate_cmd      = '/usr/local/bin/mimir --modules=true -config.file %',
 
     ##
     # Systemd related parameters
