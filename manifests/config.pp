@@ -64,7 +64,7 @@ class mimir::config {
   }
 
   if $log_to_file {
-    if has_key($systemd_overrides, 'Service') and ( has_key($systemd_overrides['Service'], 'StandardOutput') or has_key($systemd_overrides['Service'], 'StandardError')) {
+    if (('Service' in $systemd_overrides) and ('StandardOutput' in $systemd_overrides['Service'] or 'StandardError' in $systemd_overrides['Service'])) {
       fail('log_to_file option is not compatible with systemd overrides: StandardOutput or StandardError')
     }
     else {
