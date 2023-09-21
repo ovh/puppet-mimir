@@ -25,7 +25,7 @@ class mimir::config {
     ensure => 'directory',
     owner  => $config_owner,
     group  => $config_group,
-    mode   => '0750'
+    mode   => '0750',
   }
 
   # Write mimir configuration file.
@@ -37,7 +37,7 @@ class mimir::config {
     owner        => $config_owner,
     group        => $config_group,
     mode         => '0640',
-    validate_cmd => $validate_cmd
+    validate_cmd => $validate_cmd,
   }
 
   # The default service file of mimir use an EnvironmentFile where the
@@ -63,7 +63,7 @@ class mimir::config {
     content => epp('mimir/systemd-default.epp', {'config_dir' => $config_dir, 'custom_args' => $custom_args, 'log_level' => $log_level}),
     owner   => 'root',
     group   => 'root',
-    mode    => '0640'
+    mode    => '0640',
   }
 
   if $log_to_file {
@@ -96,7 +96,7 @@ class mimir::config {
     content => epp('mimir/mimir-dropin.conf.epp', {
         'systemd_overrides' => $final_systemd_overrides
       }
-    )
+    ),
   }
 
   if $log_to_file {
@@ -121,7 +121,7 @@ class mimir::config {
       delaycompress => false,
       path          => "${log_dir_path}/${log_file_path}",
       rotate        => 7,
-      rotate_every  => 'daily'
+      rotate_every  => 'daily',
     }
   }
 }

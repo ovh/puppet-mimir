@@ -227,8 +227,8 @@ Default value:
 {
         'Service' => {
             # Mimir needs to open quite a lot of socket, this value seems widely used for high traffic softwares.
-            'LimitNOFILE' => '1048576'
-        }
+            'LimitNOFILE' => '1048576',
+        },
     }
 ```
 
