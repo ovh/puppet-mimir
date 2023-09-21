@@ -17,15 +17,13 @@ class mimir::config {
   $systemd_overrides = $::mimir::systemd_overrides
   $validate_cmd      = $::mimir::validate_cmd
 
-
-
   # Here we ensure that the configuration directory created
   # by the package has the expected owner, group and mode.
   file { $config_dir:
     ensure => 'directory',
     owner  => $config_owner,
     group  => $config_group,
-    mode   => '0750'
+    mode   => '0750',
   }
 
   # Write mimir configuration file.
@@ -37,7 +35,7 @@ class mimir::config {
     owner        => $config_owner,
     group        => $config_group,
     mode         => '0640',
-    validate_cmd => $validate_cmd
+    validate_cmd => $validate_cmd,
   }
 
   # The default service file of mimir use an EnvironmentFile where the
@@ -55,19 +53,18 @@ class mimir::config {
     default: {
       $environment_file =  '/etc/default/mimir'
     }
-
   }
 
   file { $environment_file:
     ensure  => 'file',
-    content => epp('mimir/systemd-default.epp', {'config_dir' => $config_dir, 'custom_args' => $custom_args, 'log_level' => $log_level}),
+    content => epp('mimir/systemd-default.epp', { 'config_dir' => $config_dir, 'custom_args' => $custom_args, 'log_level' => $log_level }),
     owner   => 'root',
     group   => 'root',
-    mode    => '0640'
+    mode    => '0640',
   }
 
   if $log_to_file {
-    if has_key($systemd_overrides, 'Service') and ( has_key($systemd_overrides['Service'], 'StandardOutput') or has_key($systemd_overrides['Service'], 'StandardError')) {
+    if (('Service' in $systemd_overrides) and ('StandardOutput' in $systemd_overrides['Service'] or 'StandardError' in $systemd_overrides['Service'])) {
       fail('log_to_file option is not compatible with systemd overrides: StandardOutput or StandardError')
     }
     else {
@@ -96,7 +93,7 @@ class mimir::config {
     content => epp('mimir/mimir-dropin.conf.epp', {
         'systemd_overrides' => $final_systemd_overrides
       }
-    )
+    ),
   }
 
   if $log_to_file {
@@ -121,7 +118,7 @@ class mimir::config {
       delaycompress => false,
       path          => "${log_dir_path}/${log_file_path}",
       rotate        => 7,
-      rotate_every  => 'daily'
+      rotate_every  => 'daily',
     }
   }
 }

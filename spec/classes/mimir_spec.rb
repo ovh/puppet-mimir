@@ -22,7 +22,7 @@ describe 'mimir' do
         'log_level'            => 'info',
         'restart_cmd'          => '/bin/systemctl reload mimir',
         'restart_on_change'    => false,
-        'validate_cmd'         => '/usr/local/bin/mimir --modules=true',
+        'validate_cmd'         => '/usr/local/bin/mimir --modules=true -config.file %',
       },
       'not_defaults' => {
         'config_hash' => {

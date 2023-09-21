@@ -9,6 +9,6 @@ class mimir::service {
     enable     => true,
     hasstatus  => true,
     hasrestart => true,
-    restart    => $restart_cmd
+    restart    => $restart_cmd,
   }
 }
