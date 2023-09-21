@@ -55,12 +55,11 @@ class mimir::config {
     default: {
       $environment_file =  '/etc/default/mimir'
     }
-
   }
 
   file { $environment_file:
     ensure  => 'file',
-    content => epp('mimir/systemd-default.epp', {'config_dir' => $config_dir, 'custom_args' => $custom_args, 'log_level' => $log_level}),
+    content => epp('mimir/systemd-default.epp', { 'config_dir' => $config_dir, 'custom_args' => $custom_args, 'log_level' => $log_level }),
     owner   => 'root',
     group   => 'root',
     mode    => '0640',
