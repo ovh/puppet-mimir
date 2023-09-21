@@ -17,8 +17,6 @@ class mimir::config {
   $systemd_overrides = $::mimir::systemd_overrides
   $validate_cmd      = $::mimir::validate_cmd
 
-
-
   # Here we ensure that the configuration directory created
   # by the package has the expected owner, group and mode.
   file { $config_dir:
