@@ -22,7 +22,7 @@
 # @param log_owner Owner to use for log resources
 # @param log_to_file Should log be kept in journald or sent to a dedicated file
 # @param validate_cmd Command use to validate configuration
-# @param restart_cmd Command use to restart/reload process
+# @param restart_cmd Command use to restart process
 # @param restart_on_change Should the process be restarted on configuration changes
 # @param systemd_overrides List of systemd parameters to override
 class mimir (
@@ -60,7 +60,7 @@ class mimir (
     # Systemd related parameters
     ##
     # Set default mimir systemd service restart command
-    String    $restart_cmd       = '/bin/systemctl reload mimir',
+    String    $restart_cmd       = '/bin/systemctl restart mimir',
     Boolean   $restart_on_change = true,
     Hash      $systemd_overrides = {
         'Service' => {
