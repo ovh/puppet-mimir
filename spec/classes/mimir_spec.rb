@@ -20,7 +20,7 @@ describe 'mimir' do
         'systemd_overrides'    => nil,
         'log_to_file'          => false,
         'log_level'            => 'info',
-        'restart_cmd'          => '/bin/systemctl reload mimir',
+        'restart_cmd'          => '/bin/systemctl restart mimir',
         'restart_on_change'    => false,
         'validate_cmd'         => '/usr/local/bin/mimir --modules=true -config.file %',
       },

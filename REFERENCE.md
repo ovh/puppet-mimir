@@ -203,9 +203,9 @@ Default value: `'/usr/local/bin/mimir --modules=true -config.file %'`
 
 Data type: `String`
 
-Command use to restart/reload process
+Command use to restart process
 
-Default value: `'/bin/systemctl reload mimir'`
+Default value: `'/bin/systemctl restart mimir'`
 
 ##### <a name="-mimir--restart_on_change"></a>`restart_on_change`
 
