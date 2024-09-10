@@ -3,19 +3,21 @@
 # Configure Mimir metrics platform.
 # For a deep dive in mimir configuration see https://grafana.com/docs/mimir/latest/
 class mimir::config {
-  $config_dir        = $::mimir::config_dir
-  $config_group      = $::mimir::config_group
-  $config_owner      = $::mimir::config_owner
-  $custom_args       = $::mimir::custom_args
-  $log_dir_path      = $::mimir::log_dir_path
-  $log_file_path     = $::mimir::log_file_path
-  $log_file_mode     = $::mimir::log_file_mode
-  $log_group         = $::mimir::log_group
-  $log_level         = $::mimir::log_level
-  $log_owner         = $::mimir::log_owner
-  $log_to_file       = $::mimir::log_to_file
-  $systemd_overrides = $::mimir::systemd_overrides
-  $validate_cmd      = $::mimir::validate_cmd
+  $config_dir         = $::mimir::config_dir
+  $config_group       = $::mimir::config_group
+  $config_owner       = $::mimir::config_owner
+  $custom_args        = $::mimir::custom_args
+  $log_dir_path       = $::mimir::log_dir_path
+  $log_file_path      = $::mimir::log_file_path
+  $log_file_mode      = $::mimir::log_file_mode
+  $log_group          = $::mimir::log_group
+  $log_level          = $::mimir::log_level
+  $log_owner          = $::mimir::log_owner
+  $log_to_file        = $::mimir::log_to_file
+  $restart_on_change  = $::mimir::restart_on_change
+  $restart_on_upgrade = $::mimir::restart_on_upgrade
+  $systemd_overrides  = $::mimir::systemd_overrides
+  $validate_cmd       = $::mimir::validate_cmd
 
   # Here we ensure that the configuration directory created
   # by the package has the expected owner, group and mode.
@@ -57,7 +59,7 @@ class mimir::config {
 
   file { $environment_file:
     ensure  => 'file',
-    content => epp('mimir/systemd-default.epp', { 'config_dir' => $config_dir, 'custom_args' => $custom_args, 'log_level' => $log_level }),
+    content => epp('mimir/systemd-default.epp', { 'config_dir' => $config_dir, 'custom_args' => $custom_args, 'log_level' => $log_level, 'restart_on_upgrade' => $restart_on_upgrade }),
     owner   => 'root',
     group   => 'root',
     mode    => '0640',

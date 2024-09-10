@@ -8,4 +8,4 @@ CONFIG_FILE="<%= $config_dir %>/config.yml"
 # Custom user defined arguments.
 CUSTOM_ARGS="<%= $custom_args.join(' ') %>"
 
-RESTART_ON_UPGRADE="true"
+RESTART_ON_UPGRADE="<%= $restart_on_upgrade %>"
