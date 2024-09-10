@@ -24,6 +24,7 @@
 # @param validate_cmd Command use to validate configuration
 # @param restart_cmd Command use to restart process
 # @param restart_on_change Should the process be restarted on configuration changes
+# @param restart_on_upgrade Should the process be restarted on package upgrade
 # @param systemd_overrides List of systemd parameters to override
 class mimir (
     ##
@@ -60,9 +61,10 @@ class mimir (
     # Systemd related parameters
     ##
     # Set default mimir systemd service restart command
-    String    $restart_cmd       = '/bin/systemctl restart mimir',
-    Boolean   $restart_on_change = true,
-    Hash      $systemd_overrides = {
+    String    $restart_cmd        = '/bin/systemctl restart mimir',
+    Boolean   $restart_on_change  = true,
+    Boolean   $restart_on_upgrade = true,
+    Hash      $systemd_overrides  = {
         'Service' => {
             # Mimir needs to open quite a lot of socket, this value seems widely used for high traffic softwares.
             'LimitNOFILE' => '1048576',

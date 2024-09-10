@@ -45,6 +45,7 @@ The following parameters are available in the `mimir` class:
 * [`validate_cmd`](#-mimir--validate_cmd)
 * [`restart_cmd`](#-mimir--restart_cmd)
 * [`restart_on_change`](#-mimir--restart_on_change)
+* [`restart_on_upgrade`](#-mimir--restart_on_upgrade)
 * [`systemd_overrides`](#-mimir--systemd_overrides)
 
 ##### <a name="-mimir--package_ensure"></a>`package_ensure`
@@ -212,6 +213,14 @@ Default value: `'/bin/systemctl restart mimir'`
 Data type: `Boolean`
 
 Should the process be restarted on configuration changes
+
+Default value: `true`
+
+##### <a name="-mimir--restart_on_upgrade"></a>`restart_on_upgrade`
+
+Data type: `Boolean`
+
+Should the process be restarted on package upgrade
 
 Default value: `true`
 

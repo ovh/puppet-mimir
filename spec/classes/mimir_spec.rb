@@ -22,6 +22,7 @@ describe 'mimir' do
         'log_level'            => 'info',
         'restart_cmd'          => '/bin/systemctl restart mimir',
         'restart_on_change'    => false,
+        'restart_on_upgrade'   => true,
         'validate_cmd'         => '/usr/local/bin/mimir --modules=true -config.file %',
       },
       'not_defaults' => {
@@ -53,6 +54,7 @@ describe 'mimir' do
         'log_to_file'           => true,
         'restart_cmd'           => '/test/bin/restart',
         'restart_on_change'     => true,
+        'restart_on_upgrade'    => false,
         'validate_cmd'          => '/test/bin/validate',
       }
     }
@@ -146,7 +148,7 @@ describe 'mimir' do
                 "# Custom user defined arguments.\n"\
                 "CUSTOM_ARGS=\"#{params['custom_args'].join(' ')}\"\n"\
                 "\n"\
-                "RESTART_ON_UPGRADE=\"true\"\n",
+                "RESTART_ON_UPGRADE=\"#{params['restart_on_upgrade']}\"\n",
               owner: 'root',
               group: 'root',
               mode: '0640',
